@@ -1,34 +1,35 @@
-# mmdev
+# MMDev - 制造云开发者平台
 
-制造云开发者平台 (Manufacturing Cloud Developer Platform)
-
-## 项目简介
-
-`mmdev` 是一个用于支持制造云开发的工具集，提供了元数据服务、异常编码生成、代码生成规则等功能，旨在提升开发效率和代码质量。
+MMDev 是一个用于制造云开发的开发者平台，提供元数据服务和工具集成，帮助开发者快速获取代码元数据和异常编码。
 
 ## 功能特性
 
-- **元数据服务**: 提供代码元数据和异常元数据的查询接口。
-- **异常编码生成**: 根据业务模块和对象生成唯一的异常编码。
-- **代码生成规则**: 提供代码生成和优化的规则提示。
-- **FastMCP 集成**: 使用 FastMCP 框架构建开发者工具。
+- **代码元数据服务**: 根据项目和代码路径获取业务模块、业务对象、代码类型等信息。
+- **异常编码服务**: 根据项目、业务模块、业务对象和异常内容生成异常编码。
+- **开发工具集成**: 提供代码生成规则和优化规则的工具支持。
 
-## 项目结构
+## 环境要求
 
-- `main.py`: 项目入口文件。
-- `mcp/`: 包含元数据服务和工具集的实现。
-  - `dev_mcp.py`: FastMCP 工具和服务定义。
-  - `dev_server_mock.py`: 元数据服务的 FastAPI 实现。
-
-## 快速开始
-
-### 环境要求
-
-- Python 版本: `>=3.13`
+- Python 版本: 3.13 或更高
 - 依赖库: `fastmcp`, `httpx`, `mcp[cli]`
 
-### 安装依赖
+## 安装步骤
 
+1. 克隆项目到本地:
+   ```bash
+   git clone https://github.com/ggoop/mmdev.git
+   cd mmdev
+
+2. 创建虚拟环境并激活:
+```bash
+python3.13 -m venv .venv
+source .venv/bin/activate  # Linux/MacOS
+.venv\Scripts\activate     # Windows
+
+3. 安装依赖:
 ```bash
 pip install -r requirements.txt
-```
+
+4.启动服务:
+```bash
+python main.py
