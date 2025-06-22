@@ -1,11 +1,13 @@
 [project]
-name = "ggoop-mm-dev-mcp"
-version = "0.1.1"
+name = "yonyou-mm-dev-mcp"
+version = "0.1.2"
 description = "制造云开发者平台"
+authors = [
+    { name = "yungangwu", email = "yungangwu@gmail.com" }
+]
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "fastapi[standard]>=0.115.13",
     "fastmcp>=2.8.1",
     "httpx>=0.28.1",
     "mcp[cli]>=1.9.4",
@@ -21,4 +23,4 @@ dev = [
 ]
 
 [project.scripts]
-ggoop-mm-dev-mcp = "mm_dev_mcp.server:main"
+yonyou-mm-dev-mcp = "mm_dev_mcp.cli:main"

@@ -152,9 +152,6 @@ def generate_code_request(language: str, task_description: str) -> str:
     return rule_item
 
 
-# =========mcp prompt 服务定义结束===========
-def main()->None:
-    # 启动 FastMCP 服务
-    mcp.run(transport="stdio")
+# =========mcp prompt 服务定义结束==========
 if __name__ == "__main__":
-    main()
+   mcp.run(transport="stdio")

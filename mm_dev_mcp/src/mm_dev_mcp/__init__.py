@@ -1,4 +1,4 @@
-"""yonyou mm dev mcp server"""
+"""mm dev mcp server"""
 
 __version__ = "1.0.0"
 __author__ = "ggoop"
