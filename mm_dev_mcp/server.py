@@ -10,7 +10,7 @@ CONST_PROJECT = os.getenv("project", "")
 
 
 # Initialize FastMCP server
-mcp = FastMCP("mm/dev", "developer code API Integration")
+mcp = FastMCP("mm_dev_mcp", "developer code API Integration")
 
 
 async def make_metadata_request(
@@ -153,7 +153,8 @@ def generate_code_request(language: str, task_description: str) -> str:
 
 
 # =========mcp prompt 服务定义结束===========
-
-if __name__ == "__main__":
+def main()->None:
     # 启动 FastMCP 服务
     mcp.run(transport="stdio")
+if __name__ == "__main__":
+    main()

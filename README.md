@@ -19,17 +19,16 @@ MMDev 是一个用于制造云开发的开发者平台，提供元数据服务�
    ```bash
    git clone https://github.com/ggoop/mmdev.git
    cd mmdev
+   ```
+2. 安装依赖:
+    ```bash
+    # With uv (recommended)
+    uv sync
 
-2. 创建虚拟环境并激活:
-```bash
-python3.13 -m venv .venv
-source .venv/bin/activate  # Linux/MacOS
-.venv\Scripts\activate     # Windows
-
-3. 安装依赖:
-```bash
-pip install -r requirements.txt
-
-4.启动服务:
-```bash
-python main.py
+    # Or with pip
+    pip install -e .
+    ```
+3. 启动服务:
+    ```bash
+    uv run main.py
+    ```
