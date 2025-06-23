@@ -1,7 +1,7 @@
 """mm dev mcp server"""
 
-__version__ = "1.0.0"
-__author__ = "ggoop"
+__version__ = "0.1.3"
+__author__ = "yungangwu"
 __email__ = "yungangwu@gmail.com"
 
 from .server import mcp
