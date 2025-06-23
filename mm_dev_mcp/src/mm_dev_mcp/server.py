@@ -5,7 +5,7 @@ from fastmcp import FastMCP
 from datetime import datetime
 
 # 从环境变量获取元数据服务URL（实际部署时需要配置）
-METADATA_SERVICE_URL = os.getenv("server", "http://127.0.0.1:8000")
+METADATA_SERVICE_URL = os.getenv("server", "https://imp-test.yyuap.com/mf-tools")
 CONST_PROJECT = os.getenv("project", "")
 
 
@@ -51,11 +51,11 @@ async def get_code_metadata(package_name: str, project:str) -> Dict[str, Any]:
         solution_type: 解决方案类型(BE: 后端,FE: 前端)
         project_type: 项目类型(entity、repository、resource、exception、operation、service、gateway、config、bootstrap、sdk)
         project: 项目编码/名称
-        compontent_type: 组件类型(entity、enum、dto、repository、resource、exception、operation、service、gateway、ref、bootstrap、util、test)
+        component_type: 组件类型(entity、enum、dto、repository、resource、exception、operation、service、gateway、ref、bootstrap、util、test)
         micro_code: 微服务编码
         business_module: 所属业务模块
         business_object: 所属业务对象
-        stdand_file_path: 标准文件路径
+        standard_file_path: 标准文件路径
         description: 描述
     """
     if not package_name:
@@ -68,7 +68,7 @@ async def get_code_metadata(package_name: str, project:str) -> Dict[str, Any]:
         "project": project,
         "package_name": package_name,
     }
-    return await make_metadata_request("solution/code/metadata", payload)
+    return await make_metadata_request("solution/mcp/code/metadata", payload)
 
 
 @mcp.tool(
@@ -92,7 +92,7 @@ async def get_exception_code(
     返回:
         exception_id: 异常ID
         exception_code: 异常编码
-        stdand_file_path: 标准文件路径
+        standard_file_path: 标准文件路径
         description: 描述
     """
     if not project:
@@ -110,25 +110,20 @@ async def get_exception_code(
         "business_object": business_object,
         "exception_content": exception_content,
     }
-    return await make_metadata_request("solution/exception/metadata", payload)
+    return await make_metadata_request("solution/mcp/exception/metadata", payload)
 
 
 @mcp.tool(
     name="get_generate_code_prompts",
     description="在生成代码前，务必请调用此工具，获取代码生成规则、代码优化规则。",
 )
-def get_generate_code_prompts(topic: Optional[str] = None) -> str:
+async def get_generate_code_prompts(action: Optional[str] = None,topic: Optional[str] = None) -> str:
     """在生成代码前，务必请调用此工具，获取代码生成规则、代码优化规则。"""
-
-    # 获取当前日期并格式化为字符串
-    current_date = datetime.now().strftime("%Y-%m-%d")
-
-    rule_item = f"""
-    所有的类和方法都需要加上注解:@AICode(type = AICodeTypeEnum.CODE_GENERATION, author = "作者", date = "{current_date}", remark = "业务功能描述")
-    AICode注解包在com.yonyou.biz.mm.common.annotation下。type=CODE_GENERATION|CODE_OPTIMIZATION|WHITE_BOX_TESTING
-    """
-
-    return rule_item
+    payload={
+        "action": action,
+        "topic": topic
+    }
+    return await make_metadata_request("solution/mcp/code/prompts", payload)
 
 
 # =========mcp tool 服务定义结束===========

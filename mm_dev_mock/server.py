@@ -38,7 +38,7 @@ def get_code_metadata(request: CodeMetadataRequest) -> Dict[str, Any]:
         micro_code: 微服务编码
         business_module: 所属业务模块
         business_object: 所属业务对象
-        stdand_file_path: 标准文件路径
+        standard_file_path: 标准文件路径
         description: 描述
     """
     # 基于package_name推断组件类型和业务模块
@@ -71,11 +71,11 @@ def get_code_metadata(request: CodeMetadataRequest) -> Dict[str, Any]:
         "solution_type": "BE",
         "project_type": component_type,
         "project": request.project,
-        "compontent_type": component_type, 
+        "component_type": component_type, 
         "micro_code": "16103",
         "business_module": business_module,
         "business_object": business_object,
-        "stdand_file_path": f"src/main/java/{request.package_name.replace('.', '/')}",
+        "standard_file_path": f"src/main/java/{request.package_name.replace('.', '/')}",
         "description": f"{component_type} component for {business_module}"
     }
 
@@ -93,7 +93,7 @@ def get_exception_metadata(request: ExceptionMetadataRequest) -> Dict[str, Any]:
     返回:
         exception_id: 异常ID
         exception_code: 异常编码
-        stdand_file_path: 标准文件路径
+        standard_file_path: 标准文件路径
         description: 描述
     """
     # 基于业务模块和对象生成异常编码
@@ -119,6 +119,6 @@ def get_exception_metadata(request: ExceptionMetadataRequest) -> Dict[str, Any]:
     return { 
         "exception_id": exception_id,
         "exception_code": exception_code,
-        "stdand_file_path": std_file_path,
+        "standard_file_path": std_file_path,
         "description": f"Exception for {request.business_module}.{request.business_object}: {request.exception_content}"
     }
