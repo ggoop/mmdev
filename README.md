@@ -26,3 +26,19 @@ MMDev 是一个用于制造云开发的开发者平台，提供元数据服务�
   }
 }
 ```
+or
+```json
+{
+  "mcpServers": {
+    "mmdev": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "<mcp server directory>",
+        "run",
+        "server.py"
+      ]
+    }
+  }
+}
+```

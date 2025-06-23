@@ -23,7 +23,7 @@ async def make_metadata_request(
     url = f"{METADATA_SERVICE_URL}/{path}"
     async with httpx.AsyncClient(timeout=30.0) as client:
         try:
-            response = await client.post(url, json=json, headers=headers)
+            response = await client.post(url, json=json, headers=headers,params={"singlePage":True})
             response.raise_for_status()
             return response.json()
         except httpx.HTTPStatusError as e:
