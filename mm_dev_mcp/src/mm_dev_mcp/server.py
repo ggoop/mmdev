@@ -40,12 +40,12 @@ async def make_metadata_request(
     name="get_code_metadata",
     description="依据项目和代码路径（包名），获取代码对应的业务模块、业务对象、代码类型等元数据信息",
 )
-async def get_code_metadata(package_name: str, project:str) -> Dict[str, Any]:
+async def get_code_metadata(file_path: str, project:str) -> Dict[str, Any]:
     """
     依据项目和代码路径或者包名，获取代码所属的业务模块、业务对象、代码类型等元数据信息
 
     参数:
-        package_name: 包名可路径可以是包名,也可以是代码路径,如: com.yonyou.biz.mm.plan.exception.cmp.demand
+        file_path: 代码文件路径,如: src/com/yonyou/biz/mm/plan/exception/cmp/demand
         project: 项目编码或者项目名称
     返回:
         solution_type: 解决方案类型(BE: 后端,FE: 前端)
@@ -58,15 +58,15 @@ async def get_code_metadata(package_name: str, project:str) -> Dict[str, Any]:
         standard_file_path: 标准文件路径
         description: 描述
     """
-    if not package_name:
-        raise ValueError("代码包名或者文件路径 不能为空")
+    if not file_path:
+        raise ValueError("代码文件路径 不能为空")
 
     if not project:
         raise ValueError("项目不能为空")
 
     payload = {
         "project": project,
-        "package_name": package_name,
+        "file_path": file_path,
     }
     return await make_metadata_request("solution/mcp/code/metadata", payload)
 

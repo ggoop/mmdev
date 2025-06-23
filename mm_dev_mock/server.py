@@ -29,7 +29,7 @@ def get_code_metadata(request: CodeMetadataRequest) -> Dict[str, Any]:
     
     参数:
         project: 项目编码或者项目名称
-        package_name: 包名可路径可以是包名,也可以是代码路径,如: com.yonyou.biz.mm.plan.exception.cmp.demand
+        file_path: 包名可路径可以是包名,也可以是代码路径,如: com.yonyou.biz.mm.plan.exception.cmp.demand
     返回:
         solution_type: 解决方案类型(BE: 后端,FE: 前端)
         project_type: 项目类型(entity、repository、resource、exception、operation、service、gateway、config、bootstrap、sdk)
