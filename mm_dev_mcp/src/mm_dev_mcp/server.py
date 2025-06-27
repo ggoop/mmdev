@@ -151,5 +151,3 @@ def generate_code_request(language: str, task_description: str) -> str:
 # =========mcp prompt 服务定义结束==========
 if __name__ == "__main__":
    mcp.run(transport="stdio")
-   # mcp.run(transport="websocket", host="localhost", port=8000)
-# mcp.run(transport="websocket", host="localhost", port=8000)
