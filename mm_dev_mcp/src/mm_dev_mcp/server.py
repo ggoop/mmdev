@@ -4,7 +4,7 @@ from typing import Optional, Dict, Any, List
 from fastmcp import FastMCP
 from datetime import datetime
 
-# 从环境变量获取元数据服务URL（实际部署时需要配置）
+# 从环境变量获取元数据服务URL（实际部署时需要配置）1
 METADATA_SERVICE_URL = os.getenv("server", "https://imp-test.yyuap.com/mf-tools")
 CONST_PROJECT = os.getenv("project", "")
 
@@ -12,6 +12,7 @@ CONST_PROJECT = os.getenv("project", "")
 # Initialize FastMCP server
 mcp = FastMCP("mm_dev_mcp", "developer code API Integration")
 
+#dddata 请求元数据服务
 #dddata 请求元数据服务
 async def make_metadata_request(
     path: str, json: Optional[Dict[str, Any]] = None
