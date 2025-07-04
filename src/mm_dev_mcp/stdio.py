@@ -5,5 +5,3 @@ def main():
     mcp.run(transport="stdio")
 if __name__ == "__main__":
     main()
-
-# mm_dev_mcp/src/mm_dev_mcp/cli.py
